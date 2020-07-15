@@ -6,7 +6,7 @@ import androidx.room.Room
 import android.content.Context
 
 @Database(entities = [Customer::class, Salesman::class], version = 0, exportSchema = false)
-public abstract class DatabaseX : RoomDatabase() {
+abstract class DatabaseX : RoomDatabase() {
 
     abstract fun customerDao(): CustomerDao
     //abstract fun salesmanDao(): SalesmanDao
@@ -14,6 +14,7 @@ public abstract class DatabaseX : RoomDatabase() {
     companion object {
         // Singleton prevents multiple instances of database opening at the
         // same time.
+        // The companion object is a singleton, and its members can be accessed directly via the name of the containing class
         @Volatile
         private var INSTANCE: DatabaseX? = null
 
