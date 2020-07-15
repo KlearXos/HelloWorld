@@ -9,7 +9,7 @@ import androidx.room.OnConflictStrategy
 @Dao
 interface CustomerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(vararg customers: Customer)
+    fun insert(vararg customers: Customer) //accepts several arguments of the same type
 
     @Insert
     fun insert(lst : List<Customer>)
@@ -27,7 +27,10 @@ interface CustomerDao {
     fun delete(lst : List<Customer>)
 
     @Query("SELECT * FROM 'Ana2*****'")
-    fun loadAll(): Array<Customer>
+    fun loadAll(): List<Customer>
+
+    @Query("DELETE FROM 'Ana2*****'")
+    fun deleteAll()
 
     @Query("SELECT * FROM 'Ana2*****' WHERE id = :id")
     fun load(id : Long): Customer
